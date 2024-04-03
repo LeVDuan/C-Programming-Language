@@ -1,0 +1,5 @@
+4
+PB01 Pho_bo 40000
+CR02 Com_rang 35000
+BC03 Bun_ca 25000
+BDT04 Banh_da_tron 40000
