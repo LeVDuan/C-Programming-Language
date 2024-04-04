@@ -50,7 +50,7 @@ int Bai5(){
     printf("Bài 5: Tính Tổng và Trung Bình Của Dãy Số\nNhập số n: ");
     scanf("%d",&n);
     int sum = (n + 1)*n/2;
-    double avg = (n + 1)/2;
+    double avg = ((double)n + 1)/2;
     printf("Tổng: %d\nTrung bình: %.3lf\n", sum, avg);
     return 1;    
 }
@@ -101,6 +101,7 @@ int Bai10(){
     printf("-------------------------------\n");
     printf("%-30s%-20s\n","Ten san pham", "Gia");
     printf("%-30s%-20s\n",name, price);
+    return 0;
 }
 
 int Bai11(){
@@ -148,6 +149,7 @@ int Bai12(){
     printf("----------------------------------------------------\n");
     printf("%-20s%-20s%-20s%-20s\n", "Ten nhan vien", "So gio lam", "Luong moi gio", "Tong luong");
     printf("%-20s%-20d$%-20d$%-20.0lf\n", name, workHour, salaryPerHour, sumSalary);
+    return 0;
 }
 
 
