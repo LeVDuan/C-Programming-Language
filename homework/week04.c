@@ -1,6 +1,11 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
 #define PI 3.14159
+void clearBuffer(){
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
 int Bai1(){
     double r = 0;
     printf("Bài 1: Tính diện tích và chu vi Hình tròn\nNhập bán kính: ");
@@ -70,6 +75,7 @@ int Bai8(){
 }
 
 int Bai9(){
+    printf("Bài 9: In số dưới dạng bảng: ");
     int i, j;
     for(i = 1; i <= 5; i++) {
         for(j = 1; j <= 5; j++) {
@@ -81,15 +87,67 @@ int Bai9(){
 }
 
 int Bai10(){
-    
+    printf("Bài 10: Định dạng đầu ra sản phẩm\n");
+    char name[40], price[30];
+    printf("Tên sản phẩm: ");
+    clearBuffer();
+    fgets(name, sizeof(name), stdin);
+    name[strcspn(name, "\n")] = '\0';
+
+    printf("Giá: ");
+    // clearBuffer();
+    fgets(price, sizeof(price), stdin);
+    price[strcspn(price, "\n")] = '\0';
+    printf("-------------------------------\n");
+    printf("%-30s%-20s\n","Ten san pham", "Gia");
+    printf("%-30s%-20s\n",name, price);
 }
 
 int Bai11(){
+    printf("Bài 11: In thông tin sinh viên\n");
+    char name[40], code[10];
+    double avg;
     
+    printf("Tên sinh viên: ");
+    clearBuffer();
+    fgets(name, sizeof(name), stdin);
+    name[strcspn(name, "\n")] = '\0';
+
+    printf("Mã sinh viên: ");
+    // clearBuffer();
+    fgets(code, sizeof(code), stdin);
+    code[strcspn(code, "\n")] = '\0';
+
+    printf("Điểm trung bình: ");
+    scanf("%lf", &avg);
+
+    printf("----------------------------------------------------\n");
+    printf("%-20s%-20s%-20s\n","Ten sinh vien", "Ma sinh vien", "Diem trung binh");
+    printf("%-20s%-20s%-20.3lf\n", name, code, avg);
+    return 1;
 }
 
 int Bai12(){
+    printf("Bài 12: Định dạng bảng lương nhân viên\n");
+    char name[40];
+    int workHour, salaryPerHour;
+    double sumSalary;
     
+    printf("Nhập tên nhân viên: ");
+    clearBuffer();
+    fgets(name, sizeof(name), stdin);
+    name[strcspn(name, "\n")] = '\0';
+
+    printf("Nhập số giờ làm: ");
+    scanf("%d", &workHour);
+
+    printf("Nhập lương mỗi giờ: ");
+    scanf("%d",&salaryPerHour);
+
+    sumSalary = workHour * salaryPerHour;
+    printf("----------------------------------------------------\n");
+    printf("%-20s%-20s%-20s%-20s\n", "Ten nhan vien", "So gio lam", "Luong moi gio", "Tong luong");
+    printf("%-20s%-20d$%-20d$%-20.0lf\n", name, workHour, salaryPerHour, sumSalary);
 }
 
 
