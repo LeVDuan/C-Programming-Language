@@ -41,7 +41,11 @@ char* reverseStr(char *str) {
     return str;
 }
 
-int separateWordStr(char *str, char*** res){
+typedef struct string {
+    char string[50];
+} string_t;
+
+int separateWordStr(char *str, string_t *list){
     removeExtraSpacesStr(str);
 
     int words = wordCountStr(str);
@@ -60,15 +64,20 @@ int separateWordStr(char *str, char*** res){
         }
     }
     resStr[len] = '\0';
+    strcpy(list[0].string,result[0]);
+    strcpy(list[1].string,result[1]);
+    strcpy(list[2].string,result[2]);
+
+
     printf("%s, %s, %s\n", result[0], result[1], result[2]);
-    *res = result;
+    // *res = result;
     return words;
 }
 
 int main() {
     int chose = -1, n;
     char str[100] = "Le   Văn  Duan";
-    char** result;
+    string_t list[50];
     // printf("Nhập xâu: ");
     // fgets(str, sizeof(str), stdin);
     // str[strlen(str)-1] = '\0';
@@ -97,14 +106,10 @@ int main() {
                 printf("Xâu đảo ngược là: |%s|",str);
                 break;
             case 4:
-                n = separateWordStr(str, &result);
-
-                    printf("%s|", result[0]);
-                    printf("%s|", result[1]);
-                    printf("%s|", result[2]);
-                    printf("duab\n");
-                    printf("%s|", result[3]);
-
+                n = separateWordStr(str, list);
+                for(int i = 0; i < n; i++) {
+                    printf("\t|%s|\n",list[i].string);
+                }
                 break;
             default:
                 printf("Invalid!\n");
