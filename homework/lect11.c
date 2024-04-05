@@ -50,7 +50,7 @@ int separateWordStr(char *str, string_t *list){
 
     int words = wordCountStr(str);
     int len = strlen(str), j = 0;
-    char resStr[len];
+    char *resStr = (char*)malloc(len*sizeof(char));
     char* result[words];
 
     result[j] = resStr;
@@ -68,9 +68,7 @@ int separateWordStr(char *str, string_t *list){
     strcpy(list[1].string,result[1]);
     strcpy(list[2].string,result[2]);
 
-
-    printf("%s, %s, %s\n", result[0], result[1], result[2]);
-    // *res = result;
+    free(resStr);
     return words;
 }
 
@@ -78,9 +76,9 @@ int main() {
     int chose = -1, n;
     char str[100] = "Le   Văn  Duan";
     string_t list[50];
-    // printf("Nhập xâu: ");
-    // fgets(str, sizeof(str), stdin);
-    // str[strlen(str)-1] = '\0';
+    printf("Nhập xâu: ");
+    fgets(str, sizeof(str), stdin);
+    str[strlen(str)-1] = '\0';
     while(1){
         printf("\n----------------------------------------------------------------------\n"
                        "1. Cắt bỏ các dấu cách thừa trong một xâu\n"
@@ -108,7 +106,7 @@ int main() {
             case 4:
                 n = separateWordStr(str, list);
                 for(int i = 0; i < n; i++) {
-                    printf("\t|%s|\n",list[i].string);
+                    printf("\t%s\n",list[i].string);
                 }
                 break;
             default:
